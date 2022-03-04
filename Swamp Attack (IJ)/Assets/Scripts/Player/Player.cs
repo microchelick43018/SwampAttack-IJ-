@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent[typeof(Animator)]]
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;

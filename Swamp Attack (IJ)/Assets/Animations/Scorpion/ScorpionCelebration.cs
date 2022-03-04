@@ -9,11 +9,6 @@ public class ScorpionCelebration : MonoBehaviour
 
     private Vector3 _jumpVector;
 
-    private void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         _jumpVector = new Vector3(transform.position.x, transform.position.y + _jumpHeight, transform.position.z);

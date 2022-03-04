@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
+
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int MaxHealth;
@@ -35,6 +37,12 @@ public abstract class Enemy : MonoBehaviour
         Dying -= Die;
     }
 
+    private void Die()
+    {
+        Target.AddMoney(Reward);
+        gameObject.SetActive(false);
+    }
+
     public void Attack()
     {
         Animator.Play(EnemiesAnimations.Attack);
@@ -53,12 +61,6 @@ public abstract class Enemy : MonoBehaviour
     public void Init(Player target)
     {
         Target = target;
-    }
-
-    public void Die()
-    {
-        Target.AddMoney(Reward);
-        gameObject.SetActive(false);
     }
 
     public Player GetTarget()
